@@ -1,10 +1,18 @@
 import cv2
 import numpy as np
+import os
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Construct full paths to the model files
+detect_proto = os.path.join(current_dir, "detect.prototxt")
+detect_model = os.path.join(current_dir, "detect.caffemodel")
+sr_proto = os.path.join(current_dir, "sr.prototxt")
+sr_model = os.path.join(current_dir, "sr.caffemodel")
 
 # Initialize WeChat Detector
 detector = cv2.wechat_qrcode_WeChatQRCode(
-    "detect.prototxt", "detect.caffemodel",
-    "sr.prototxt", "sr.caffemodel"
+    detect_proto, detect_model, sr_proto, sr_model
 )
 
 # Initialize Camera
